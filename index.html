@@ -35,7 +35,6 @@
     position: relative;
   }
 
-  /* ── Animated grid background ── */
   body::before {
     content: '';
     position: fixed;
@@ -48,7 +47,6 @@
     z-index: 0;
   }
 
-  /* ── Floating orbs ── */
   .orb {
     position: fixed;
     border-radius: 50%;
@@ -66,7 +64,6 @@
     100% { transform: translate(30px, 40px) scale(1.1); }
   }
 
-  /* ── Layout ── */
   .container {
     max-width: 860px;
     margin: 0 auto;
@@ -75,7 +72,6 @@
     z-index: 1;
   }
 
-  /* ── Header ── */
   .site-header {
     text-align: center;
     padding: 60px 0 20px;
@@ -155,7 +151,6 @@
     50%       { text-shadow: 0 0 20px rgba(255,0,144,1); }
   }
 
-  /* ── CTA Button ── */
   .button {
     display: block;
     text-align: center;
@@ -219,7 +214,6 @@
     margin-bottom: 8px;
   }
 
-  /* ── Language Toggle ── */
   .lang-toggle {
     display: flex;
     justify-content: center;
@@ -249,7 +243,6 @@
     box-shadow: 0 0 14px rgba(0,245,255,0.3);
   }
 
-  /* ── Divider ── */
   .neon-divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
@@ -257,7 +250,6 @@
     opacity: 0.5;
   }
 
-  /* ── Section heading ── */
   .section-label {
     font-family: 'Orbitron', monospace;
     font-size: 11px;
@@ -268,7 +260,6 @@
     opacity: 0.8;
   }
 
-  /* ── Cards ── */
   .card {
     background: var(--bg-card);
     border: 1px solid var(--border-glow);
@@ -304,7 +295,6 @@
     text-shadow: 0 0 12px rgba(0,245,255,0.4);
   }
 
-  /* ── Math steps ── */
   .math-step {
     display: flex;
     align-items: flex-start;
@@ -336,7 +326,6 @@
     padding-top: 4px;
   }
 
-  /* ── Feature list ── */
   .feature-list {
     list-style: none;
     padding: 0;
@@ -364,7 +353,6 @@
 
   .feature-list li:hover { color: var(--neon-cyan); }
 
-  /* ── Stats row ── */
   .stats-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -404,7 +392,6 @@
     letter-spacing: 0.5px;
   }
 
-  /* ── "Not ready" card ── */
   .card.alt {
     background: linear-gradient(135deg, rgba(191,0,255,0.08), rgba(0,245,255,0.05));
     border-color: rgba(191,0,255,0.3);
@@ -425,7 +412,6 @@
     margin-bottom: 8px;
   }
 
-  /* ── Footer ── */
   .footer {
     text-align: center;
     padding: 40px 0 20px;
@@ -439,7 +425,6 @@
     opacity: 0.6;
   }
 
-  /* ── Scan-line overlay ── */
   body::after {
     content: '';
     position: fixed;
@@ -455,14 +440,12 @@
     z-index: 9999;
   }
 
-  /* ── Responsive ── */
   @media (max-width: 600px) {
     .stats-row { grid-template-columns: 1fr; }
     .card { padding: 22px 18px; }
     h1 { font-size: 26px; }
   }
 
-  /* ── Pricing Card ── */
   .pricing-card {
     background: var(--bg-card);
     border: 1px solid rgba(57,255,20,0.2);
@@ -569,7 +552,6 @@
     font-style: italic;
   }
 
-  /* ── Tutor Card ── */
   .tutor-card {
     background: var(--bg-card);
     border: 1px solid var(--border-glow);
@@ -684,7 +666,6 @@
     .tutor-card { padding: 28px 18px 24px; }
   }
 
-  /* MathJax color fix */
   .MathJax { color: var(--neon-cyan) !important; }
 </style>
 
@@ -694,59 +675,43 @@
     document.querySelectorAll('.tr').forEach(el => el.style.display = lang === 'tr' ? '' : 'none');
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     document.getElementById('btn-' + lang).classList.add('active');
+    // Save language preference so enquiry page picks it up
+    try { localStorage.setItem('lang', lang); } catch(e) {}
   }
 </script>
 </head>
 
 <body onload="showLang('en')">
 
-<!-- Ambient orbs -->
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
 
 <div class="container">
 
-  <!-- ── Hero ── -->
+  <!-- Hero -->
   <header class="site-header">
     <div class="badge">GCSE · Mathematics · 2026</div>
-
     <h1>GCSE Maths Tutoring<br>That Improves Grades Fast</h1>
-
     <p class="sub">Learn in English or Turkish — no confusion, just clear results</p>
-
     <div class="urgency">Limited weekly slots available</div>
-
-    <a href="YOUR_BOOKING_LINK_HERE" class="button">⚡ Book Free 15-Minute Assessment</a>
+    <a href="enquiry.html" class="button">⚡ Book Free 15-Minute Assessment</a>
     <p class="small">No pressure. Just clarity on your current level.</p>
   </header>
 
-  <!-- ── Meet Your Tutor ── -->
+  <!-- Tutor -->
   <div class="tutor-card">
     <div class="tutor-avatar-wrap">
       <img src="YOUR_IMAGE_LINK_HERE" alt="Eylul Maths Tutor" class="tutor-avatar">
       <div class="tutor-avatar-ring"></div>
     </div>
-
     <p class="section-label" style="margin-top:0;">Meet Your Tutor</p>
     <h2 class="tutor-name">Eylul</h2>
-
-    <p class="tutor-bio">
-      Eylul is an experienced maths tutor who has been teaching at a local college for the past few years, helping students build confidence and improve their understanding of key topics.
-    </p>
-    <p class="tutor-bio">
-      Originally from Turkey and fully fluent in both Turkish and English, she works especially well with students who find maths harder to follow in English. Being able to explain concepts clearly in both languages removes confusion and helps students progress faster.
-    </p>
-    <p class="tutor-bio">
-      Her approach is simple — break maths down into clear, step-by-step explanations that actually make sense, so students don't just memorise methods, but truly understand them.
-    </p>
-    <p class="tutor-bio">
-      While she regularly supports GCSE and school-level students, she also works with adult learners looking to improve their maths skills, build confidence, or return to education.
-    </p>
-    <p class="tutor-bio">
-      Every lesson is tailored to the individual, with a focus on building confidence, improving results, and making steady, measurable progress.
-    </p>
-
+    <p class="tutor-bio">Eylul is an experienced maths tutor who has been teaching at a local college for the past few years, helping students build confidence and improve their understanding of key topics.</p>
+    <p class="tutor-bio">Originally from Turkey and fully fluent in both Turkish and English, she works especially well with students who find maths harder to follow in English. Being able to explain concepts clearly in both languages removes confusion and helps students progress faster.</p>
+    <p class="tutor-bio">Her approach is simple — break maths down into clear, step-by-step explanations that actually make sense, so students don't just memorise methods, but truly understand them.</p>
+    <p class="tutor-bio">While she regularly supports GCSE and school-level students, she also works with adult learners looking to improve their maths skills, build confidence, or return to education.</p>
+    <p class="tutor-bio">Every lesson is tailored to the individual, with a focus on building confidence, improving results, and making steady, measurable progress.</p>
     <div class="tutor-checks">
       <div class="tutor-check"><span class="check-icon">✔</span> Experienced college tutor</div>
       <div class="tutor-check"><span class="check-icon">✔</span> Native Turkish &amp; fluent English</div>
@@ -757,7 +722,7 @@
 
   <div class="neon-divider"></div>
 
-  <!-- ── Stats ── -->
+  <!-- Stats -->
   <div class="stats-row">
     <div class="stat-box">
       <span class="stat-number">98%</span>
@@ -773,7 +738,7 @@
     </div>
   </div>
 
-  <!-- ── Language Toggle ── -->
+  <!-- Language Toggle -->
   <div class="lang-toggle">
     <button id="btn-en" class="lang-btn active" onclick="showLang('en')">English</button>
     <button id="btn-tr" class="lang-btn" onclick="showLang('tr')">Türkçe</button>
@@ -781,9 +746,8 @@
 
   <div class="neon-divider"></div>
 
-  <!-- ── Pricing ── -->
+  <!-- Pricing -->
   <p class="section-label">Lesson Pricing</p>
-
   <div class="pricing-card">
     <div class="pricing-price">
       <span class="price-amount">£50</span>
@@ -791,40 +755,33 @@
     </div>
     <p class="pricing-title">1-to-1 Maths Lessons</p>
     <p class="pricing-sub">Each lesson is tailored to the student's level, focusing on clear understanding, confidence building, and real progress.</p>
-
     <div class="pricing-features">
       <div class="pricing-feature"><span class="check-icon">✔</span> Personalised 1-to-1 support</div>
       <div class="pricing-feature"><span class="check-icon">✔</span> English &amp; Turkish lessons available</div>
       <div class="pricing-feature"><span class="check-icon">✔</span> Suitable for students and adult learners</div>
     </div>
-
     <p class="pricing-cta-text">Start with a free 15-minute assessment to identify your level and how best to improve.</p>
-
-    <a href="YOUR_BOOKING_LINK_HERE" class="button" style="margin-top:8px;">Book Free Assessment</a>
+    <a href="enquiry.html" class="button" style="margin-top:8px;">Book Free Assessment</a>
     <p class="small">Limited weekly slots available</p>
   </div>
 
   <div class="neon-divider"></div>
 
-  <!-- ── Example ── -->
+  <!-- Example -->
   <p class="section-label">Interactive Example</p>
-
   <div class="card">
     <h2 class="en">Try a Quick Example</h2>
     <h2 class="tr">Hızlı Bir Örnek Deneyin</h2>
-
     <div class="math-step">
       <div class="step-num">Q</div>
       <div class="step-text en">Solve: \( 2x + 5 = 15 \)</div>
       <div class="step-text tr">Çöz: \( 2x + 5 = 15 \)</div>
     </div>
-
     <div class="math-step">
       <div class="step-num">1</div>
       <div class="step-text en">Subtract 5 from both sides → \( 2x = 10 \)</div>
       <div class="step-text tr">Her iki taraftan 5 çıkar → \( 2x = 10 \)</div>
     </div>
-
     <div class="math-step">
       <div class="step-num">2</div>
       <div class="step-text en">Divide both sides by 2 → \( x = 5 \)</div>
@@ -832,13 +789,11 @@
     </div>
   </div>
 
-  <!-- ── What You Get ── -->
+  <!-- What You Get -->
   <p class="section-label">What's Included</p>
-
   <div class="card">
     <h2 class="en">What You Get</h2>
     <h2 class="tr">Ne Elde Edersiniz</h2>
-
     <ul class="feature-list en">
       <li>Clear step-by-step explanations for every topic</li>
       <li>Lessons adapted precisely to your current level</li>
@@ -846,7 +801,6 @@
       <li>Bilingual support — switch between English &amp; Turkish instantly</li>
       <li>Personalised feedback after every session</li>
     </ul>
-
     <ul class="feature-list tr">
       <li>Her konu için adım adım açık anlatım</li>
       <li>Mevcut seviyenize göre uyarlanmış dersler</li>
@@ -858,27 +812,24 @@
 
   <div class="neon-divider"></div>
 
-  <!-- ── Second CTA ── -->
-  <a href="YOUR_BOOKING_LINK_HERE" class="button">🚀 Secure Your Free Assessment</a>
+  <!-- Third CTA -->
+  <a href="enquiry.html" class="button">🚀 Secure Your Free Assessment</a>
   <p class="small">Spots fill quickly before exams</p>
 
   <div class="neon-divider"></div>
 
-  <!-- ── Not Ready ── -->
+  <!-- Not Ready -->
   <p class="section-label">Explore More</p>
-
   <div class="card alt">
     <h2>Not Ready Yet?</h2>
     <p>Explore full interactive maths lessons at your own pace — no commitment required.</p>
     <a href="LINK_TO_ADVANCED_SITE" class="button secondary">Explore Maths Lessons →</a>
   </div>
 
-  <!-- ── Footer ── -->
   <footer class="footer">
     <span>///</span> &nbsp; GCSE Maths Tutor &nbsp; · &nbsp; English &amp; Turkish &nbsp; · &nbsp; 2026 &nbsp; <span>///</span>
   </footer>
 
 </div>
-
 </body>
 </html>
