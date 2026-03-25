@@ -387,8 +387,20 @@ var SERVICE_ID='service_t151llp';
 var TEMPLATE_ID='template_kihigsn';
 
 function showLang(lang){
-  document.querySelectorAll('.en').forEach(function(el){el.style.display=lang==='en'?'':' none'});
-  document.querySelectorAll('.tr').forEach(function(el){el.style.display=lang==='tr'?'':'none'});
+  document.querySelectorAll('.en').forEach(function(el){
+    if(el.classList.contains('step-text')){
+      el.style.display=lang==='en'?'block':'none';
+    } else {
+      el.style.display=lang==='en'?'':'none';
+    }
+  });
+  document.querySelectorAll('.tr').forEach(function(el){
+    if(el.classList.contains('step-text')){
+      el.style.display=lang==='tr'?'block':'none';
+    } else {
+      el.style.display=lang==='tr'?'':'none';
+    }
+  });
   document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.remove('active')});
   document.getElementById('btn-'+lang).classList.add('active');
   try{localStorage.setItem('lang',lang)}catch(e){}
